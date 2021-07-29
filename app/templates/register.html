@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block styles %}
+ {{ super() }}
+
+ <link rel="stylesheet" href="{{url_for('.static', filename='register.css')}}">
+
+{% endblock %}
+
+{% block title %}
+
+User Registration
+
+{% endblock %}
+
+{% block content %}
+	<div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5"> <span class="circle"><i class="fa fa-check"></i></span>
+                <h5 class="mt-3">Register</h5> <small class="mt-2 text-muted">Get every update regarding cyclones directly to your mobile phone </small>
+                <form method="POST">
+
+                	<div class="form-input"> <i class="fa fa-envelope"></i> <input type="text" class="form-control" placeholder="Email address" name="email"> </div>
+	                <div class="form-input"> <i class="fa fa-user"></i> <input type="text" class="form-control" placeholder="Username" name="username"> </div>
+	                <div class="form-input"> <i class="fa fa-lock"></i> <input type="phone" class="form-control" placeholder="+91 98989 12345" name="phone"> </div>
+	                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> I agree all the statements </label> </div> <button class="btn btn-primary mt-4 signup">Submit</button>
+               
+                	
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+	{{ super() }}
+{% endblock %}
