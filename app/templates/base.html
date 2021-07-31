@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="{{url_for('.static', filename='base.css')}}">
 
     {% endblock %}
+    
+    <style>
+	.image{
+		height:100%;
+		width:100%;
+	      }
+	.image img{
+		height:100%;
+		width:100%;}
+	.image video{
+		height:100%;
+		width:100%;}
+    </style>
 
     <title>{% block title %} Home {% endblock %}</title>
 </head>
@@ -70,23 +83,20 @@
 
           <h1 class="fw-light">Live Cyclone monitoring...</h1>
          
-            <div class="card-columns d-flex justify-content-center">
+            <div class="card-columns d-flex justify-content-center image">
                 <div class="card border-0 p-5 shadow monitor">
                   <div class="card-block">
                     <h4>Original vedio</h4>
-                    <video width="400" height="300" controls>
-                      <source src="{{url_for('static', filename='test.webm')}}">
+		    <video width="400" height="300" controls autoplay>
+                      <source src="{{url_for('static', filename='Video.mp4')}}">
                       Can't load the video.
                     </video>
                   </div>
                 </div>
-                <div class="card border-0 p-5 shadow monitor">
+                <div class="card border-0 p-5 shadow monitor image">
                   <div class="card-block">
-                    <h4>Monitered vedio</h4>
-                    <video width="400" height="300" controls>
-                      <source src="{{url_for('static', filename='test.webm')}}">
-                      Can't load the video.
-                    </video>
+                    <h4>Monitered video</h4>
+                    <img src="{{ url_for('video_feed') }}">
                   </div>
                 </div>
               </div>

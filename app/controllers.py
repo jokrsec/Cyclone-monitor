@@ -1,12 +1,23 @@
 from app import app, bcrypt, db
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for,Response
 from app.models import User
 from app.api_helper import *
 from app.functions import *
+from app.model.functions import process,heatmap
 
 @app.route('/', methods=['GET'])
 def index():
 	return render_template('base.html')
+
+@app.route("/video_feed")
+def video_feed():
+	return Response(process(),
+		mimetype = "multipart/x-mixed-replace; boundary=frame")
+
+@app.route("/heat")
+def heat():
+        
+        return Response(heatmap(),mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
