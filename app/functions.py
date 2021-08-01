@@ -20,22 +20,19 @@ def get_users_phones():
 	phones = db.session.query(User.phone).all()
 	return phones
 
-def send_alert(phones, intensity):
+def send_alert(acc):
+	phones=get_users_phones()
 	for phone in phones:
-		phone = phone.strip().replace(' ', '')
-
-		text = "Cyclone alert - \
-		\nCyclone is approching your area\nIntensity is {}% \
-		\nPlease take required steps to be safe \
-		\nBy:\nAuthorities\n\n".format(intensity)
+		print(phone)
+		text = "disaster alert - \nDisaster is approching with probability of {}% \nPlease take required steps to be safe \nBy:\nAuthorities\n\n".format(acc)
 
 		body = {
-	        "from": "Vonage",
-	        "to": "{}".format(phone),
-	        "text": text,
+			"from": "Vonage",
+			"to": "{}".format(phone[0]),
+			"text": text,
 		}
 
-		res = api_helper.send_message(body)
+		res = send_message(body)
 		if res != "success":
 			return res
 	return "Alert sent successfully"

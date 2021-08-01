@@ -14,3 +14,7 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
 from app.controllers import *
+from app.functions import *
+from app.api_helper import *
+
+

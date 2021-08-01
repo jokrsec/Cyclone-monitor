@@ -3,6 +3,7 @@ import numpy as np
 from skimage.io import imshow,imread
 from matplotlib import pyplot as plt
 from skimage.transform import rescale, resize
+from app.functions import *
 m=load_model("disaster_classification_pkl.pkl")
 # m.summary()
 from skimage.io import imshow,imread
@@ -14,22 +15,23 @@ def output(arr):
     prediction=np.argmax(p[0])
 #     print(prediction)
     if prediction==0 and p[0][0]*100>90:
-        return("cyclone"+str(p[0][0]*100)+"%")
+        return("cyclone "+str(p[0][0]*100)+"%")
     elif prediction==1 and p[0][1]*100>90:
-        return("Earth quake"+str(p[0][1]*100)+"%")
+        return("Earth quake "+str(p[0][1]*100)+"%")
     elif prediction==2 and p[0][2]*100>90:
-        return("Flood"+str(p[0][2]*100)+"%")
+        return("Flood "+str(p[0][2]*100)+"%")
     elif prediction==3 and p[0][3]*100>90:
-        return("Wild Fire"+str(p[0][3]*100)+"%")
+        return("Wild Fire "+str(p[0][3]*100)+"%")
     else:
         return("none You are free from disaster")
-    
 
 import numpy as np
 import cv2
 def process():
+    flager=False
     cap = cv2.VideoCapture('My Video.mp4')
     count=0
+    text=''
     while(cap.isOpened()):
         ret, frame = cap.read()
         count+=20
@@ -37,7 +39,12 @@ def process():
             k=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             k=cv2.resize(k, (224, 224))
             text=output(k)
-            print(text)
+            print(flager,text)
+            if flager!=1 and text!='none You are free from disaster':
+                responce=send_alert(text)
+                print(responce)
+                flager=1
+            #print(text)
             font = 'FONT_HERSHEY_COMPLEX'
             cv2.putText(frame,text,(0,60), 4,1.7,(255,255,255),4,cv2.LINE_AA)
             (flag, encodedImage) = cv2.imencode(".jpg",frame)
