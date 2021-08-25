@@ -29,25 +29,26 @@ import numpy as np
 import cv2
 def process():
     flager=False
-    cap = cv2.VideoCapture('My Video.mp4')
+    cap = cv2.VideoCapture('video.mp4')
     count=0
     text=''
     while(cap.isOpened()):
         ret, frame = cap.read()
         count+=20
-        if(count%200==0):
+        if(count%100==0):
             k=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             k=cv2.resize(k, (224, 224))
             text=output(k)
             print(flager,text)
             if flager!=1 and text!='none You are free from disaster':
                 responce=send_alert(text)
-                print(responce)
+                #print(responce)
                 flager=1
-            #print(text)
+            ##print(text)
             font = 'FONT_HERSHEY_COMPLEX'
-            cv2.putText(frame,text,(0,60), 4,1.7,(255,255,255),4,cv2.LINE_AA)
+            cv2.putText(frame,text,(0,60), 4,1.7,(0,0,255),4,cv2.LINE_AA)
             (flag, encodedImage) = cv2.imencode(".jpg",frame)
+            
             yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encodedImage) + b'\r\n')
 
     cap.release()
@@ -56,7 +57,7 @@ def process():
 
 
 def heatmap():
-    cap = cv2.VideoCapture('My Video.mp4')
+    cap = cv2.VideoCapture('video.mp4')
     count=0
     while(cap.isOpened()):
         ret, frame = cap.read()
