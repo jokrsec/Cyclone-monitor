@@ -4,6 +4,7 @@ For training we have used RESNET-50 So that we could caoture every minute featur
 And we extracted an total of 90MB.
 
 The working of site:
+https://docs.google.com/presentation/d/e/2PACX-1vT_dsOo_W-7gwalEBhlFwf01s_GOqq3_cc_4Hv2P3Mf4w7qu_3hsbSyKuu_d7cPXpDFf1kLPVKgB9bB/embed?start=false&loop=false&delayms=3000
 ## Pravega
 
 ###### Presentation on:
@@ -11,47 +12,6 @@ The working of site:
 Dealing with natural disasters and their aftermath.
 
 
-#### Model Overview:
-
-```
-Previous
-Data
-```
-```
-Pre-
-Process
-Data
-```
-Take
-real-time
-data
-
-```
-Train the
-Resnet-
-on data
-```
-```
-Predict and
-analyze using
-model
-```
-```
-Check
-Accuracy
-and save
-model
-```
-```
-Send the
-output to the
-server
-```
-```
-Pre-
-Process and
-enhance data
-```
 
 ##### The Deep Learning Model in Detail
 
