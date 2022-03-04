@@ -12,6 +12,19 @@ https://docs.google.com/presentation/d/e/2PACX-1vT_dsOo_W-7gwalEBhlFwf01s_GOqq3_
 Dealing with natural disasters and their aftermath.
 
 
+#### Brief Introduction
+The above-mentioned code is all about the detection of natural disasters using aerial images using deep learning.
+
+The project is divided into two parts they are Detection and alerting model.
+- In the detection, we have built a deep learning model for the detection of 
+  disasters.
+- the model used above is resnet-50
+- And after detection, we have used the Gradcam algorithm to do the sematic 
+  segmentation of the disaster based on the intensity.
+- Then we have built an alert system in which when a disaster is being detected the nearby area will get a message to take precautions. 
+- We built that using Vonage API.
+- And built a frontend interface for the whole system
+
 
 ##### The Deep Learning Model in Detail
 
